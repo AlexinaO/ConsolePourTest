@@ -16,6 +16,10 @@ namespace ConsolePourTest.Entities
 
         public decimal GetTotal()
         {
+            if (!Lines.Any())
+            {
+                return 0;
+            }
             var totalLines = Lines.Sum(x => x.Product.Price * x.Quantity);
             return totalLines + ShippingCost;
         }
