@@ -4,7 +4,7 @@ namespace ConsolePourTest.Entities
 {
     public class Product
     {
-        private readonly decimal price;
+        private decimal price;
 
         public int Id { get; set; }
 
@@ -17,7 +17,7 @@ namespace ConsolePourTest.Entities
             {
                 if (value <= 0)
                     throw new Exception("Prix ne peut pas être négatif");
-                Price = value;
+                price = value;
             }
         }
 
@@ -25,7 +25,7 @@ namespace ConsolePourTest.Entities
         {
             if (Price <= 0)
                 throw new Exception("Prix ne peut pas être négatif");
-            if (string.IsNullOrEmpty(Name))
+            if (string.IsNullOrWhiteSpace(Name))
                 throw new Exception("Nom est requis");
         }
     }
