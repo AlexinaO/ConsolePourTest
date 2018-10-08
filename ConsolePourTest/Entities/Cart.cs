@@ -12,7 +12,7 @@ namespace ConsolePourTest.Entities
 
         public List<CartLine> Lines { get; set; }
 
-        public decimal ShippingCost { get; set; } = 10;
+        public decimal ShippingCost { get; set; }
 
         public decimal GetTotal()
         {
@@ -21,7 +21,16 @@ namespace ConsolePourTest.Entities
                 return 0;
             }
             var totalLines = Lines.Sum(x => x.Product.Price * x.Quantity);
+            ShippingCost = totalLines > 100 ? 0 : 10;
             return totalLines + ShippingCost;
+        }
+
+        public void Validate()
+        {
+            foreach (var line in Lines)
+            {
+                line.Validate();
+            }
         }
     }
 }
