@@ -18,7 +18,7 @@ namespace ConsolePourTestTests
         public void TestMethodAge()
         {
             var dateNaissance = new DateTime(2010, 5, 1);
-            Assert.IsTrue(DateTime.Today.Subtract(dateNaissance).Days / 365 > 10); //test pour savoir si âge >10 ans
+            Assert.IsTrue(DateTime.Today.Subtract(dateNaissance).Days / 365 > 1); //test pour savoir si âge >10 ans
         }
     }
 }

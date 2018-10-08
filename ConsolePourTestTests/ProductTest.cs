@@ -7,15 +7,18 @@ namespace ConsolePourTestTests
     [TestClass]
     public class ProductTest
     {
-        [TestMethod]
-        public void NoPriceInfOrEqual0()
+        [DataTestMethod]
+        [DataRow("0")]
+        [DataRow("-1")]
+        public void ValidatePrice(string rawPrice)
         {
+            var price = decimal.Parse(rawPrice);
             var exception = Assert.ThrowsException<Exception>(() =>
             {
                 var product = new Product
                 {
                     Name = "Bouteille Bordeaux",
-                    Price = 0
+                    Price = price
                 };
             });
             Assert.AreEqual("Prix ne peut pas être négatif", exception.Message);

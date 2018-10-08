@@ -28,5 +28,21 @@ namespace ConsolePourTestTests
             });
             Assert.AreEqual(100, cart.GetTotal());
         }
+
+        [TestMethod]
+        public void NoShippingCostSup100()
+        {
+            var cart = new Cart();
+            cart.Lines.Add(new CartLine
+            {
+                Product = new Product
+                {
+                    Name = "Tronçonneuse",
+                    Price = 90
+                },
+                Quantity = 2
+            });
+            Assert.AreEqual(180, cart.GetTotal());
+        }
     }
 }
