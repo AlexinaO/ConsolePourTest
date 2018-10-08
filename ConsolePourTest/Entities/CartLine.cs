@@ -1,4 +1,6 @@
-﻿namespace ConsolePourTest.Entities
+﻿using System;
+
+namespace ConsolePourTest.Entities
 {
     public class CartLine
     {
@@ -7,5 +9,13 @@
         public Product Product { get; set; }
 
         public int Quantity { get; set; }
+
+        public void Validate()
+        {
+            if (Quantity < 0)
+                throw new Exception("Quantité doit être positive");
+            if (Product == null)
+                throw new Exception("Produit est requis");
+        }
     }
 }
